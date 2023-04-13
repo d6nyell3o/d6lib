@@ -57,9 +57,6 @@ function lib:Main(name)
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 4)
 	
-	local tabHandler = {}
-	
-	local first = true
 	
 	function tabHandler:Tab(name)
 		--// Creating the yttab
@@ -102,15 +99,23 @@ function lib:Main(name)
 		UIPadding.PaddingBottom = UDim.new(0, 5)
 		UIPadding.PaddingTop = UDim.new(0, 5)
 		
-		if first then
-			first = false
-			ScrollingFrame.Visible = true
-			Main1.BackgroundTransparency = 0
-		else
-			ScrollingFrame.Visible = false
-			Main1.BackgroundTransparency = 1
-		end
+		local ItemContainer = ScrollingFrame
+		local TabContainer = TabHOlder
 
+		for i,v in pairs(TabContainer:GetChildren()) do
+			if v.Classname == "TextButton" then
+				v.MouseButton1Click:Connect(function()
+					for i,v2 in pairs(ItemContainer:GetChildren()) do
+						if v2.Name ~= v.name then
+							v.Visible = false
+						else
+							v2.Visible = true
+						end
+					end
+				end)
+			end
+		end
+	end
 		--// Elements
 		local ElementHandler = {}
 		function ElementHandler:Button(text, callback)
