@@ -101,7 +101,7 @@ function lib:Main(name)
 			for i,v in pairs(TabHOlder:GetChildren()) do
 				if v.Classname == "TextButton" then
 					v.MouseButton1Click:Connect(function()
-						for i,v2 in pairs(container:GetChildren()) do
+						for i,v2 in pairs(ScrollingFrame:GetChildren()) do
 							if v2.Name ~= v.name then
 								v.Visible = false
 							else
