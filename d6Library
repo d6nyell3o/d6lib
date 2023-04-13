@@ -107,7 +107,7 @@ function lib:Main(name)
 		--// Event
 		Main1.MouseButton1Click:Connect(function()
 			for _,v in pairs(game.CoreGui:FindFirstChild('MyLib').main:GetChildren()) do
-				if v.Name == "container" then
+				if v.Name == "ScrollingFrame" then
 					v.Visible = false
 				end
 			end
