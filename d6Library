@@ -82,7 +82,7 @@ function lib:Main(name)
 		UICorner.CornerRadius = UDim.new(0, 5)
 		UICorner.Parent = Main1
 		
-		local container = Instance.new("container")
+		local container = Instance.new("ScrollingFrame")
 		container.Parent = MainFrame
 		container.Active = true
 		container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
