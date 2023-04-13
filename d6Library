@@ -1,0 +1,198 @@
+for _,v in pairs(game.CoreGui:GetChildren()) do
+	if v.Name == "MyLib" then
+		v:Destroy()
+	end
+end
+
+local MyLib = Instance.new("ScreenGui")
+MyLib.Name = "MyLib"
+MyLib.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+MyLib.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local lib = {}
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+
+function lib:Main(name)
+	local MainFrame = Instance.new("Frame")
+	MainFrame.Name = "MainFrame"
+	MainFrame.Parent = MyLib
+	MainFrame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+	MainFrame.BorderSizePixel = 0
+	MainFrame.Position = UDim2.new(0.336166948, 0, 0.322526723, 0)
+	MainFrame.Size = UDim2.new(0, 338, 0, 227)
+	
+	local Header = Instance.new("Frame")
+	Header.Name = "Header"
+	Header.Parent = MainFrame
+	Header.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+	Header.BorderSizePixel = 0
+	Header.Size = UDim2.new(0, 100, -0.232951567, 100)
+	
+	local Title = Instance.new("TextLabel")
+	Title.Name = "Title"
+	Title.Parent = Header
+	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Title.BackgroundTransparency = 1.000
+	Title.BorderSizePixel = 0
+	Title.Position = UDim2.new(0.0734783933, 0, 0, 0)
+	Title.Size = UDim2.new(0, 91, 0, 27)
+	Title.Font = Enum.Font.GothamBold
+	Title.Text = name
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextSize = 14.000
+	Title.TextXAlignment = Enum.TextXAlignment.Left
+	
+	local TabHOlder = Instance.new("Frame")
+	TabHOlder.Name = "TabHOlder"
+	TabHOlder.Parent = MainFrame
+	TabHOlder.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+	TabHOlder.BorderSizePixel = 0
+	TabHOlder.Position = UDim2.new(0, 0, 0.110132158, 0)
+	TabHOlder.Size = UDim2.new(0, 100, 0.449867815, 100)
+	TabHOlder.ZIndex = 2
+	
+	local UIListLayout = Instance.new("UIListLayout")
+	UIListLayout.Parent = TabHOlder
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.Padding = UDim.new(0, 4)
+	
+	local tabHandler = {}
+	
+	function tabHandler:Tab(name)
+		--// Creating the yttab
+		local Main1 = Instance.new("TextButton")
+		Main1.Name = name
+		Main1.Font = Enum.Font.GothamBold
+		Main1.Text = name
+		Main1.Parent = TabHOlder
+		Main1.BackgroundColor3 = Color3.fromRGB(86, 86, 86)
+		Main1.BorderSizePixel = 0
+		Main1.Position = UDim2.new(0.0700000003, 0, 0, 0)
+		Main1.Size = UDim2.new(0, 86, 0, 26)
+		Main1.Font = Enum.Font.GothamBold
+		Main1.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Main1.TextSize = 14.000
+		
+		local UICorner = Instance.new("UICorner")
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = Main1
+		
+		local container = Instance.new("container")
+		container.Parent = MainFrame
+		container.Active = true
+		container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		container.BackgroundTransparency = 1.000
+		container.BorderSizePixel = 0
+		container.Position = UDim2.new(0.298816562, 0, 0, 0)
+		container.Size = UDim2.new(0, 237, 0, 223)
+		container.ScrollBarThickness = 1
+		
+		local UIListLayout_2 = Instance.new("UIListLayout")
+		UIListLayout_2.Parent = container
+		UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout_2.Padding = UDim.new(0, 4)
+		
+		local UIPadding = Instance.new("UIPadding")
+		UIPadding.Parent = container
+		UIPadding.PaddingBottom = UDim.new(0, 5)
+		UIPadding.PaddingTop = UDim.new(0, 5)
+		
+		--// Event
+		Main1.MouseButton1Click:Connect(function()
+			for _,v in pairs(game.CoreGui:FindFirstChild('MyLib').main:GetChildren()) do
+				if v.Name == "container" then
+					v.Visible = false
+				end
+			end
+			for _,v in pairs(game.CoreGui['MyLib'].main.tabContainer:GetChildren()) do
+				if v:IsA('TextButton') then
+					game:GetService('TweenService'):Create(v, TweenInfo.new(0.3), {TextTransparency = 0.5}):Play()
+				end
+			end
+			container.Visible = true
+			game:GetService('TweenService'):Create(Main1, TweenInfo.new(0.3), {TextTransparency = 0}):Play()
+		end)	
+		--// Elements
+		local ElementHandler = {}
+		function ElementHandler:Button(text, callback)
+			local Button = Instance.new("Frame")
+			text = text or "Button"
+			callback = callback or function() end
+			Button.Name = "Button"
+			Button.Parent = container
+			Button.BackgroundColor3 = Color3.fromRGB(86, 86, 86)
+			Button.Position = UDim2.new(0.0232067518, 0, 0.0224215239, 0)
+			Button.Size = UDim2.new(0, 226, 0, 32)
+			
+			local UICorner_2 = Instance.new("UICorner")
+			UICorner_2.CornerRadius = UDim.new(0, 5)
+			UICorner_2.Parent = Button
+			
+			local BTextButton = Instance.new("TextButton")
+			BTextButton.Name = "BTextButton"
+			BTextButton.Parent = Button
+			BTextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			BTextButton.BackgroundTransparency = 1.000
+			BTextButton.Position = UDim2.new(0.0486725681, 0, 0.0625, 0)
+			BTextButton.Size = UDim2.new(0, 215, 0, 28)
+			BTextButton.Text = text
+			BTextButton.Font = Enum.Font.GothamBold
+			BTextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+			BTextButton.TextSize = 14.000
+			BTextButton.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+			BTextButton.TextXAlignment = Enum.TextXAlignment.Left
+			
+			BTextButton.Parent = Button
+			BTextButton.MouseEnter:Connect(function()
+				game:GetService('TweenService'):Create(BTextButton, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(43,43,43)}):Play()
+			end)
+
+			BTextButton.MouseLeave:Connect(function()
+				game:GetService('TweenService'):Create(BTextButton, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(38,38,38)}):Play()
+			end)
+
+			BTextButton.MouseButton1Click:Connect(function()
+				callback()
+			end)
+			
+		end
+		
+		function ElementHandler:Section(text)
+			local Section = Instance.new("Frame")
+			Section.Name = "Section"
+			Section.Parent = container
+			Section.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+			Section.Position = UDim2.new(0.0232067518, 0, 0.0224215239, 0)
+			Section.Size = UDim2.new(0, 226, 0, 32)
+			
+			local UICorner_3 = Instance.new("UICorner")
+			UICorner_3.CornerRadius = UDim.new(0, 5)
+			UICorner_3.Parent = Section
+			
+			local SectionLabel = Instance.new("TextLabel")
+			SectionLabel.Name = "SectionLabel"
+			SectionLabel.Parent = Section
+			SectionLabel.Active = true
+			SectionLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			SectionLabel.BackgroundTransparency = 1.000
+			SectionLabel.Position = UDim2.new(0.0486725681, 0, 0.0625, 0)
+			SectionLabel.Selectable = true
+			SectionLabel.Size = UDim2.new(0, 215, 0, 28)
+			SectionLabel.Font = Enum.Font.GothamBold
+			SectionLabel.Text = "Section"
+			SectionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+			SectionLabel.TextSize = 14.000
+			SectionLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+			SectionLabel.TextXAlignment = Enum.TextXAlignment.Left	
+		end
+		return ElementHandler
+	end
+	return tabHandler
+end
+return lib
