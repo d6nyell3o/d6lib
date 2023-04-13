@@ -9,7 +9,6 @@ MyLib.Name = "MyLib"
 MyLib.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 MyLib.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 local lib = {}
-local TweenService = game:GetService("TweenService")
 
 
 function lib:Main(name)
@@ -98,26 +97,25 @@ function lib:Main(name)
 		UIPadding.Parent = ScrollingFrame
 		UIPadding.PaddingBottom = UDim.new(0, 5)
 		UIPadding.PaddingTop = UDim.new(0, 5)
-		
-		local ItemContainer = ScrollingFrame
-		local TabContainer = TabHOlder
-
-		for i,v in pairs(TabContainer:GetChildren()) do
-			if v.Classname == "TextButton" then
-				v.MouseButton1Click:Connect(function()
-					for i,v2 in pairs(ItemContainer:GetChildren()) do
-						if v2.Name ~= v.name then
-							v.Visible = false
-						else
-							v2.Visible = true
+		Main1.MouseButton1Click:Connect(function()
+			for i,v in pairs(TabHOlder:GetChildren()) do
+				if v.Classname == "TextButton" then
+					v.MouseButton1Click:Connect(function()
+						for i,v2 in pairs(container:GetChildren()) do
+							if v2.Name ~= v.name then
+								v.Visible = false
+							else
+								v2.Visible = true
+							end
 						end
-					end
-				end)
+					end)
+				end
 			end
-		end
-	end
-		--// Elements
+		end)
+
+
 		local ElementHandler = {}
+		
 		function ElementHandler:Button(text, callback)
 			local Button = Instance.new("Frame")
 			text = text or "Button"
@@ -145,22 +143,8 @@ function lib:Main(name)
 			BTextButton.TextSize = 14.000
 			BTextButton.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
 			BTextButton.TextXAlignment = Enum.TextXAlignment.Left
-			
-			BTextButton.Parent = Button
-			BTextButton.MouseEnter:Connect(function()
-				game:GetService('TweenService'):Create(BTextButton, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(43,43,43)}):Play()
-			end)
-
-			BTextButton.MouseLeave:Connect(function()
-				game:GetService('TweenService'):Create(BTextButton, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(38,38,38)}):Play()
-			end)
-
-			BTextButton.MouseButton1Click:Connect(function()
-				callback()
-			end)
-			
 		end
-		
+	
 		function ElementHandler:Section(text)
 			local Section = Instance.new("Frame")
 			Section.Name = "Section"
