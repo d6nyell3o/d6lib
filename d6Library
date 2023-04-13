@@ -82,24 +82,25 @@ function lib:Main(name)
 		UICorner.CornerRadius = UDim.new(0, 5)
 		UICorner.Parent = Main1
 		
-		local container = Instance.new("ScrollingFrame")
-		container.Parent = MainFrame
-		container.Active = true
-		container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		container.BackgroundTransparency = 1.000
-		container.BorderSizePixel = 0
-		container.Position = UDim2.new(0.298816562, 0, 0, 0)
-		container.Size = UDim2.new(0, 237, 0, 223)
-		container.ScrollBarThickness = 1
+		local ScrollingFrame = Instance.new("ScrollingFrame")
+		ScrollingFrame.Name = "ScrollingFrame"
+		ScrollingFrame.Parent = MainFrame
+		ScrollingFrame.Active = true
+		ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ScrollingFrame.BackgroundTransparency = 1.000
+		ScrollingFrame.BorderSizePixel = 0
+		ScrollingFrame.Position = UDim2.new(0.298816562, 0, 0, 0)
+		ScrollingFrame.Size = UDim2.new(0, 237, 0, 223)
+		ScrollingFrame.ScrollBarThickness = 1
 		
 		local UIListLayout_2 = Instance.new("UIListLayout")
-		UIListLayout_2.Parent = container
+		UIListLayout_2.Parent = ScrollingFrame
 		UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout_2.Padding = UDim.new(0, 4)
 		
 		local UIPadding = Instance.new("UIPadding")
-		UIPadding.Parent = container
+		UIPadding.Parent = ScrollingFrame
 		UIPadding.PaddingBottom = UDim.new(0, 5)
 		UIPadding.PaddingTop = UDim.new(0, 5)
 		
@@ -115,7 +116,7 @@ function lib:Main(name)
 					game:GetService('TweenService'):Create(v, TweenInfo.new(0.3), {TextTransparency = 0.5}):Play()
 				end
 			end
-			container.Visible = true
+			ScrollingFrame.Visible = true
 			game:GetService('TweenService'):Create(Main1, TweenInfo.new(0.3), {TextTransparency = 0}):Play()
 		end)	
 		--// Elements
@@ -125,7 +126,7 @@ function lib:Main(name)
 			text = text or "Button"
 			callback = callback or function() end
 			Button.Name = "Button"
-			Button.Parent = container
+			Button.Parent = ScrollingFrame
 			Button.BackgroundColor3 = Color3.fromRGB(86, 86, 86)
 			Button.Position = UDim2.new(0.0232067518, 0, 0.0224215239, 0)
 			Button.Size = UDim2.new(0, 226, 0, 32)
@@ -166,7 +167,7 @@ function lib:Main(name)
 		function ElementHandler:Section(text)
 			local Section = Instance.new("Frame")
 			Section.Name = "Section"
-			Section.Parent = container
+			Section.Parent = ScrollingFrame
 			Section.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
 			Section.Position = UDim2.new(0.0232067518, 0, 0.0224215239, 0)
 			Section.Size = UDim2.new(0, 226, 0, 32)
