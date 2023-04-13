@@ -10,11 +10,7 @@ MyLib.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 MyLib.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 local lib = {}
 local TweenService = game:GetService("TweenService")
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Mouse = LocalPlayer:GetMouse()
+
 
 function lib:Main(name)
 	local MainFrame = Instance.new("Frame")
@@ -63,6 +59,8 @@ function lib:Main(name)
 	
 	local tabHandler = {}
 	
+	local first = true
+	
 	function tabHandler:Tab(name)
 		--// Creating the yttab
 		local Main1 = Instance.new("TextButton")
@@ -104,18 +102,15 @@ function lib:Main(name)
 		UIPadding.PaddingBottom = UDim.new(0, 5)
 		UIPadding.PaddingTop = UDim.new(0, 5)
 		
-		--// Event
-		Main1.MouseButton1Click:Connect(function()
-				if v.Name == "ScrollingFrame" then
-					v.Visible = false
-				end
-				if v:IsA('TextButton') then
-					game:GetService('TweenService'):Create(v, TweenInfo.new(0.3), {TextTransparency = 0.5}):Play()
-				end
-			end
+		if first then
+			first = false
 			ScrollingFrame.Visible = true
-			game:GetService('TweenService'):Create(Main1, TweenInfo.new(0.3), {TextTransparency = 0}):Play()
-		end)	
+			Main1.BackgroundTransparency = 0
+		else
+			ScrollingFrame.Visible = false
+			Main1.BackgroundTransparency = 1
+		end
+
 		--// Elements
 		local ElementHandler = {}
 		function ElementHandler:Button(text, callback)
