@@ -2,7 +2,7 @@ local Library = {}
 local lib = Instance.new("ScreenGui")
 lib.Name = "lib"
 lib.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-function Library:Create()
+function Library:Create(name)
 	local main = Instance.new("ImageLabel")
 	main.Name = "main"
 	main.Parent = lib
@@ -38,7 +38,7 @@ function Library:Create()
 	Title.Position = UDim2.new(0.0402684547, 0, 0.0799999982, 0)
 	Title.Size = UDim2.new(0, 279, 0, 20)
 	Title.Font = Enum.Font.GothamBold
-	Title.Text = "Ui Library"
+	Title.Text = name
 	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Title.TextSize = 14.000
 	Title.TextXAlignment = Enum.TextXAlignment.Left
