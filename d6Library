@@ -110,7 +110,21 @@ function Library:Create(name)
 		Main1.Text = name
 		Main1.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Main1.TextSize = 14.000
-
+		Main1.MouseButton1Click:Connect(function()
+			for i,v	in pairs(Tab:GetChildren())do
+				if v.ClassName == "TextButton" then
+					v.MouseButton1Click:Connect(function()
+						for i,v2 in pairs(container:GetChildren())do
+							if v2.Name ~= v.Name then
+								v2.Visible = false
+							else
+								v2.Visible = true
+							end
+						end
+					end)
+				end
+			end
+		end)
 		
 		local container = Instance.new("ScrollingFrame")
 		container.Name = "container"
@@ -132,22 +146,6 @@ function Library:Create(name)
 		local UIPadding_2 = Instance.new("UIPadding")
 		UIPadding_2.Parent = container
 		UIPadding_2.PaddingTop = UDim.new(0, 3)
-
-		Main1.MouseButton1Click:Connect(function()
-			for i,v	in pairs(Tab:GetChildren())do
-				if v.ClassName == "TextButton" then
-					v.MouseButton1Click:Connect(function()
-						for i,v2 in pairs(container:GetChildren())do
-							if v2.Name ~= v.Name then
-								v2.Visible = false
-							else
-								v2.Visible = true
-							end
-						end
-					end)
-				end
-			end
-		end)
 		
 		local items = {}
 		function items:CreatButton(name,callback)
