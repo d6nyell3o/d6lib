@@ -1,109 +1,145 @@
-for _,v in pairs(game.CoreGui:GetChildren()) do
-	if v.Name == "MyLib" then
-		v:Destroy()
-	end
-end
-
-local MyLib = Instance.new("ScreenGui")
-MyLib.Name = "MyLib"
-MyLib.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-MyLib.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-local lib = {}
-
-
-function lib:Main(name)
-	local MainFrame = Instance.new("Frame")
-	MainFrame.Name = "MainFrame"
-	MainFrame.Parent = MyLib
-	MainFrame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
-	MainFrame.BorderSizePixel = 0
-	MainFrame.Position = UDim2.new(0.336166948, 0, 0.322526723, 0)
-	MainFrame.Size = UDim2.new(0, 338, 0, 227)
+local Library = {}
+local lib = Instance.new("ScreenGui")
+lib.Name = "lib"
+lib.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+function Library:Create()
+	local main = Instance.new("ImageLabel")
+	main.Name = "main"
+	main.Parent = lib
+	main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	main.BackgroundTransparency = 1.000
+	main.Position = UDim2.new(0.348908633, 0, 0.321547538, 0)
+	main.Size = UDim2.new(0, 312, 0, 213)
+	main.Image = "rbxassetid://3570695787"
+	main.ImageColor3 = Color3.fromRGB(18, 18, 18)
+	main.ScaleType = Enum.ScaleType.Slice
+	main.SliceCenter = Rect.new(100, 100, 100, 100)
+	main.SliceScale = 0.060
 	
-	local Header = Instance.new("Frame")
-	Header.Name = "Header"
-	Header.Parent = MainFrame
-	Header.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
-	Header.BorderSizePixel = 0
-	Header.Size = UDim2.new(0, 100, -0.232951567, 100)
+	local header = Instance.new("ImageLabel")
+	header.Name = "header"
+	header.Parent = main
+	header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	header.BackgroundTransparency = 1.000
+	header.Position = UDim2.new(0.0192307699, 0, 0.0328638479, 0)
+	header.Size = UDim2.new(0, 298, 0, 25)
+	header.Image = "rbxassetid://3570695787"
+	header.ImageColor3 = Color3.fromRGB(30, 30, 30)
+	header.ScaleType = Enum.ScaleType.Slice
+	header.SliceCenter = Rect.new(100, 100, 100, 100)
+	header.SliceScale = 0.060
 	
 	local Title = Instance.new("TextLabel")
 	Title.Name = "Title"
-	Title.Parent = Header
+	Title.Parent = header
 	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Title.BackgroundTransparency = 1.000
 	Title.BorderSizePixel = 0
-	Title.Position = UDim2.new(0.0734783933, 0, 0, 0)
-	Title.Size = UDim2.new(0, 91, 0, 27)
+	Title.Position = UDim2.new(0.0402684547, 0, 0.0799999982, 0)
+	Title.Size = UDim2.new(0, 279, 0, 20)
 	Title.Font = Enum.Font.GothamBold
-	Title.Text = name
+	Title.Text = "Ui Library"
 	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Title.TextSize = 14.000
 	Title.TextXAlignment = Enum.TextXAlignment.Left
 	
-	local TabHOlder = Instance.new("Frame")
-	TabHOlder.Name = "TabHOlder"
-	TabHOlder.Parent = MainFrame
-	TabHOlder.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
-	TabHOlder.BorderSizePixel = 0
-	TabHOlder.Position = UDim2.new(0, 0, 0.110132158, 0)
-	TabHOlder.Size = UDim2.new(0, 100, 0.449867815, 100)
-	TabHOlder.ZIndex = 2
+	local tabs = Instance.new("ImageLabel")
+	tabs.Name = "tabs"
+	tabs.Parent = main
+	tabs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	tabs.BackgroundTransparency = 1.000
+	tabs.Position = UDim2.new(0.022435898, 0, 0.178403765, 0)
+	tabs.Size = UDim2.new(0, 298, 0, 25)
+	tabs.Image = "rbxassetid://3570695787"
+	tabs.ImageColor3 = Color3.fromRGB(30, 30, 30)
+	tabs.ScaleType = Enum.ScaleType.Slice
+	tabs.SliceCenter = Rect.new(100, 100, 100, 100)
+	tabs.SliceScale = 0.060
 	
 	local UIListLayout = Instance.new("UIListLayout")
-	UIListLayout.Parent = TabHOlder
-	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.Parent = tabs
+	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 4)
 	
+	local UIPadding = Instance.new("UIPadding")
+	UIPadding.Parent = tabs
+	UIPadding.PaddingLeft = UDim.new(0, 4)
+	UIPadding.PaddingTop = UDim.new(0, 2)
 	
-	function tabHandler:Tab(name)
-		--// Creating the yttab
+	local Background = Instance.new("ImageLabel")
+	Background.Name = "Background"
+	Background.Parent = main
+	Background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Background.BackgroundTransparency = 1.000
+	Background.Position = UDim2.new(0.022435898, 0, 0.323943675, 0)
+	Background.Size = UDim2.new(0, 298, 0, 138)
+	Background.Image = "rbxassetid://3570695787"
+	Background.ImageColor3 = Color3.fromRGB(30, 30, 30)
+	Background.ScaleType = Enum.ScaleType.Slice
+	Background.SliceCenter = Rect.new(100, 100, 100, 100)
+	Background.SliceScale = 0.060
+	
+	local GG = {}
+	function GG:CreatTab(name)
+		local Tab = Instance.new("ImageLabel")
+		Tab.Name = "Tab"
+		Tab.Parent = tabs
+		Tab.Active = true
+		Tab.AnchorPoint = Vector2.new(0.5, 0.5)
+		Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Tab.BackgroundTransparency = 1.000
+		Tab.Position = UDim2.new(0.109060399, 0, 0.492380977, 0)
+		Tab.Selectable = true
+		Tab.Size = UDim2.new(0.204697981, 0, 0.896480381, 0)
+		Tab.Image = "rbxassetid://3570695787"
+		Tab.ImageColor3 = Color3.fromRGB(66, 66, 66)
+		Tab.ScaleType = Enum.ScaleType.Slice
+		Tab.SliceCenter = Rect.new(100, 100, 100, 100)
+		Tab.SliceScale = 0.060
+		
 		local Main1 = Instance.new("TextButton")
-		Main1.Name = name
+		Main1.Name = "Main1"
+		Main1.Parent = Tab
+		Main1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Main1.BackgroundTransparency = 1.000
+		Main1.BorderSizePixel = 0
+		Main1.Position = UDim2.new(0.0232795589, 0, -0.0184756797, 0)
+		Main1.Size = UDim2.new(0, 56, 0, 20)
 		Main1.Font = Enum.Font.GothamBold
 		Main1.Text = name
-		Main1.Parent = TabHOlder
-		Main1.BackgroundColor3 = Color3.fromRGB(86, 86, 86)
-		Main1.BorderSizePixel = 0
-		Main1.Position = UDim2.new(0.0700000003, 0, 0, 0)
-		Main1.Size = UDim2.new(0, 86, 0, 26)
-		Main1.Font = Enum.Font.GothamBold
 		Main1.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Main1.TextSize = 14.000
+
 		
-		local UICorner = Instance.new("UICorner")
-		UICorner.CornerRadius = UDim.new(0, 5)
-		UICorner.Parent = Main1
-		
-		local ScrollingFrame = Instance.new("ScrollingFrame")
-		ScrollingFrame.Name = "ScrollingFrame"
-		ScrollingFrame.Parent = MainFrame
-		ScrollingFrame.Active = true
-		ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ScrollingFrame.BackgroundTransparency = 1.000
-		ScrollingFrame.BorderSizePixel = 0
-		ScrollingFrame.Position = UDim2.new(0.298816562, 0, 0, 0)
-		ScrollingFrame.Size = UDim2.new(0, 237, 0, 223)
-		ScrollingFrame.ScrollBarThickness = 1
+		local container = Instance.new("ScrollingFrame")
+		container.Name = "container"
+		container.Parent = main
+		container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		container.BackgroundTransparency = 1.000
+		container.BorderSizePixel = 0
+		container.Position = UDim2.new(0.022435898, 0, 0.323943675, 0)
+		container.Selectable = false
+		container.Size = UDim2.new(0, 298, 0, 138)
+		container.ScrollBarThickness = 1
 		
 		local UIListLayout_2 = Instance.new("UIListLayout")
-		UIListLayout_2.Parent = ScrollingFrame
+		UIListLayout_2.Parent = container
 		UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout_2.Padding = UDim.new(0, 4)
 		
-		local UIPadding = Instance.new("UIPadding")
-		UIPadding.Parent = ScrollingFrame
-		UIPadding.PaddingBottom = UDim.new(0, 5)
-		UIPadding.PaddingTop = UDim.new(0, 5)
+		local UIPadding_2 = Instance.new("UIPadding")
+		UIPadding_2.Parent = container
+		UIPadding_2.PaddingTop = UDim.new(0, 3)
+
 		Main1.MouseButton1Click:Connect(function()
-			for i,v in pairs(TabHOlder:GetChildren()) do
-				if v.Classname == "TextButton" then
+			for i,v	in pairs(Tab:GetChildren())do
+				if v.ClassName == "TextButton" then
 					v.MouseButton1Click:Connect(function()
-						for i,v2 in pairs(ScrollingFrame:GetChildren()) do
-							if v2.Name ~= v.name then
-								v.Visible = false
+						for i,v2 in pairs(container:GetChildren())do
+							if v2.Name ~= v.Name then
+								v2.Visible = false
 							else
 								v2.Visible = true
 							end
@@ -112,50 +148,58 @@ function lib:Main(name)
 				end
 			end
 		end)
-
-
-		local ElementHandler = {}
 		
-		function ElementHandler:Button(text, callback)
-			local Button = Instance.new("Frame")
-			text = text or "Button"
-			callback = callback or function() end
+		local items = {}
+		function items:CreatButton(name,callback)
+			callback = callback or function()end
+			local Button = Instance.new("ImageLabel")
 			Button.Name = "Button"
-			Button.Parent = ScrollingFrame
-			Button.BackgroundColor3 = Color3.fromRGB(86, 86, 86)
-			Button.Position = UDim2.new(0.0232067518, 0, 0.0224215239, 0)
-			Button.Size = UDim2.new(0, 226, 0, 32)
-			
-			local UICorner_2 = Instance.new("UICorner")
-			UICorner_2.CornerRadius = UDim.new(0, 5)
-			UICorner_2.Parent = Button
+			Button.Parent = container
+			Button.Active = true
+			Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Button.BackgroundTransparency = 1.000
+			Button.Position = UDim2.new(0.0134228189, 0, 0.0217391308, 0)
+			Button.Selectable = true
+			Button.Size = UDim2.new(0.973154366, 0, 0.0650302395, 0)
+			Button.Image = "rbxassetid://3570695787"
+			Button.ImageColor3 = Color3.fromRGB(66, 66, 66)
+			Button.ScaleType = Enum.ScaleType.Slice
+			Button.SliceCenter = Rect.new(100, 100, 100, 100)
+			Button.SliceScale = 0.060
 			
 			local BTextButton = Instance.new("TextButton")
 			BTextButton.Name = "BTextButton"
 			BTextButton.Parent = Button
 			BTextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			BTextButton.BackgroundTransparency = 1.000
-			BTextButton.Position = UDim2.new(0.0486725681, 0, 0.0625, 0)
-			BTextButton.Size = UDim2.new(0, 215, 0, 28)
-			BTextButton.Text = text
+			BTextButton.BorderSizePixel = 0
+			BTextButton.Position = UDim2.new(0.037004143, 0, 0.0580923371, 0)
+			BTextButton.Size = UDim2.new(0, 274, 0, 25)
+			BTextButton.Text = name
 			BTextButton.Font = Enum.Font.GothamBold
 			BTextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 			BTextButton.TextSize = 14.000
-			BTextButton.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
 			BTextButton.TextXAlignment = Enum.TextXAlignment.Left
+			BTextButton.MouseButton1Click:Connect(function()
+				callback()
+			end)
 		end
-	
-		function ElementHandler:Section(text)
-			local Section = Instance.new("Frame")
+		
+		function items:CreatSection(name)
+			local Section = Instance.new("ImageLabel")
 			Section.Name = "Section"
-			Section.Parent = ScrollingFrame
-			Section.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
-			Section.Position = UDim2.new(0.0232067518, 0, 0.0224215239, 0)
-			Section.Size = UDim2.new(0, 226, 0, 32)
-			
-			local UICorner_3 = Instance.new("UICorner")
-			UICorner_3.CornerRadius = UDim.new(0, 5)
-			UICorner_3.Parent = Section
+			Section.Parent = container
+			Section.Active = true
+			Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Section.BackgroundTransparency = 1.000
+			Section.Position = UDim2.new(0.0134228189, 0, 0.0217391308, 0)
+			Section.Selectable = true
+			Section.Size = UDim2.new(0.973154366, 0, 0.0650302395, 0)
+			Section.Image = "rbxassetid://3570695787"
+			Section.ImageColor3 = Color3.fromRGB(13, 13, 13)
+			Section.ScaleType = Enum.ScaleType.Slice
+			Section.SliceCenter = Rect.new(100, 100, 100, 100)
+			Section.SliceScale = 0.060
 			
 			local SectionLabel = Instance.new("TextLabel")
 			SectionLabel.Name = "SectionLabel"
@@ -163,18 +207,18 @@ function lib:Main(name)
 			SectionLabel.Active = true
 			SectionLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			SectionLabel.BackgroundTransparency = 1.000
-			SectionLabel.Position = UDim2.new(0.0486725681, 0, 0.0625, 0)
+			SectionLabel.BorderSizePixel = 0
+			SectionLabel.Position = UDim2.new(0.037004143, 0, 0.0580923371, 0)
 			SectionLabel.Selectable = true
-			SectionLabel.Size = UDim2.new(0, 215, 0, 28)
+			SectionLabel.Size = UDim2.new(0, 274, 0, 25)
 			SectionLabel.Font = Enum.Font.GothamBold
-			SectionLabel.Text = "Section"
+			SectionLabel.Text = name
 			SectionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 			SectionLabel.TextSize = 14.000
-			SectionLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-			SectionLabel.TextXAlignment = Enum.TextXAlignment.Left	
+			SectionLabel.TextXAlignment = Enum.TextXAlignment.Left
 		end
-		return ElementHandler
+		return items
 	end
-	return tabHandler
+	return GG
 end
-return lib
+return Library
