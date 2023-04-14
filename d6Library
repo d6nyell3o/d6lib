@@ -2,7 +2,7 @@ local Library = {}
 local lib = Instance.new("ScreenGui")
 lib.Name = "lib"
 lib.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-function Library:Create(name)
+function Library:Create()
 	local main = Instance.new("ImageLabel")
 	main.Name = "main"
 	main.Parent = lib
@@ -15,7 +15,7 @@ function Library:Create(name)
 	main.ScaleType = Enum.ScaleType.Slice
 	main.SliceCenter = Rect.new(100, 100, 100, 100)
 	main.SliceScale = 0.060
-	
+
 	local header = Instance.new("ImageLabel")
 	header.Name = "header"
 	header.Parent = main
@@ -28,7 +28,7 @@ function Library:Create(name)
 	header.ScaleType = Enum.ScaleType.Slice
 	header.SliceCenter = Rect.new(100, 100, 100, 100)
 	header.SliceScale = 0.060
-	
+
 	local Title = Instance.new("TextLabel")
 	Title.Name = "Title"
 	Title.Parent = header
@@ -38,11 +38,11 @@ function Library:Create(name)
 	Title.Position = UDim2.new(0.0402684547, 0, 0.0799999982, 0)
 	Title.Size = UDim2.new(0, 279, 0, 20)
 	Title.Font = Enum.Font.GothamBold
-	Title.Text = name
+	Title.Text = "Ui Library"
 	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Title.TextSize = 14.000
 	Title.TextXAlignment = Enum.TextXAlignment.Left
-	
+
 	local tabs = Instance.new("ImageLabel")
 	tabs.Name = "tabs"
 	tabs.Parent = main
@@ -55,18 +55,18 @@ function Library:Create(name)
 	tabs.ScaleType = Enum.ScaleType.Slice
 	tabs.SliceCenter = Rect.new(100, 100, 100, 100)
 	tabs.SliceScale = 0.060
-	
+
 	local UIListLayout = Instance.new("UIListLayout")
 	UIListLayout.Parent = tabs
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 4)
-	
+
 	local UIPadding = Instance.new("UIPadding")
 	UIPadding.Parent = tabs
 	UIPadding.PaddingLeft = UDim.new(0, 4)
 	UIPadding.PaddingTop = UDim.new(0, 2)
-	
+
 	local Background = Instance.new("ImageLabel")
 	Background.Name = "Background"
 	Background.Parent = main
@@ -79,7 +79,7 @@ function Library:Create(name)
 	Background.ScaleType = Enum.ScaleType.Slice
 	Background.SliceCenter = Rect.new(100, 100, 100, 100)
 	Background.SliceScale = 0.060
-	
+
 	local GG = {}
 	function GG:CreatTab(name)
 		local Tab = Instance.new("ImageLabel")
@@ -97,7 +97,7 @@ function Library:Create(name)
 		Tab.ScaleType = Enum.ScaleType.Slice
 		Tab.SliceCenter = Rect.new(100, 100, 100, 100)
 		Tab.SliceScale = 0.060
-		
+
 		local Main1 = Instance.new("TextButton")
 		Main1.Name = "Main1"
 		Main1.Parent = Tab
@@ -111,21 +111,44 @@ function Library:Create(name)
 		Main1.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Main1.TextSize = 14.000
 		Main1.MouseButton1Click:Connect(function()
-			for i,v	in pairs(Tab:GetChildren())do
-				if v.ClassName == "TextButton" then
-					v.MouseButton1Click:Connect(function()
-						for i,v2 in pairs(container:GetChildren())do
-							if v2.Name ~= v.Name then
-								v2.Visible = false
-							else
-								v2.Visible = true
-							end
-						end
-					end)
-				end
-			end
+			container.Visible = true
+			container2.Visible =false
+		end)
+
+		local Tab = Instance.new("ImageLabel")
+		Tab.Name = "Tab"
+		Tab.Parent = tabs
+		Tab.Active = true
+		Tab.AnchorPoint = Vector2.new(0.5, 0.5)
+		Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Tab.BackgroundTransparency = 1.000
+		Tab.Position = UDim2.new(0.109060399, 0, 0.492380977, 0)
+		Tab.Selectable = true
+		Tab.Size = UDim2.new(0.204697981, 0, 0.896480381, 0)
+		Tab.Image = "rbxassetid://3570695787"
+		Tab.ImageColor3 = Color3.fromRGB(66, 66, 66)
+		Tab.ScaleType = Enum.ScaleType.Slice
+		Tab.SliceCenter = Rect.new(100, 100, 100, 100)
+		Tab.SliceScale = 0.060
+
+		local Main1 = Instance.new("TextButton")
+		Main1.Name = "Main1"
+		Main1.Parent = Tab
+		Main1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Main1.BackgroundTransparency = 1.000
+		Main1.BorderSizePixel = 0
+		Main1.Position = UDim2.new(0.0232795589, 0, -0.0184756797, 0)
+		Main1.Size = UDim2.new(0, 56, 0, 20)
+		Main1.Font = Enum.Font.GothamBold
+		Main1.Text = name
+		Main1.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Main1.TextSize = 14.000
+		Main1.MouseButton1Click:Connect(function()
+			container.Visible = false
+			container2.Visible =true
 		end)
 		
+		--Container
 		local container = Instance.new("ScrollingFrame")
 		container.Name = "container"
 		container.Parent = main
@@ -136,23 +159,45 @@ function Library:Create(name)
 		container.Selectable = false
 		container.Size = UDim2.new(0, 298, 0, 138)
 		container.ScrollBarThickness = 1
-		
+
 		local UIListLayout_2 = Instance.new("UIListLayout")
 		UIListLayout_2.Parent = container
 		UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout_2.Padding = UDim.new(0, 4)
-		
+
 		local UIPadding_2 = Instance.new("UIPadding")
 		UIPadding_2.Parent = container
 		UIPadding_2.PaddingTop = UDim.new(0, 3)
-		
+
+		--Container2
+		local container2 = Instance.new("ScrollingFrame")
+		container2.Name = "container2"
+		container2.Parent = main
+		container2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		container2.BackgroundTransparency = 1.000
+		container2.BorderSizePixel = 0
+		container2.Position = UDim2.new(0.022435898, 0, 0.323943675, 0)
+		container2.Selectable = false
+		container2.Size = UDim2.new(0, 298, 0, 138)
+		container2.ScrollBarThickness = 1
+
+		local UIListLayout_2 = Instance.new("UIListLayout")
+		UIListLayout_2.Parent = container2
+		UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout_2.Padding = UDim.new(0, 4)
+
+		local UIPadding_2 = Instance.new("UIPadding")
+		UIPadding_2.Parent = container2
+		UIPadding_2.PaddingTop = UDim.new(0, 3)
+
 		local items = {}
-		function items:CreatButton(name,callback)
+		function items:CreatButton(name,parent,callback)
 			callback = callback or function()end
 			local Button = Instance.new("ImageLabel")
 			Button.Name = "Button"
-			Button.Parent = container
+			Button.Parent = parent
 			Button.Active = true
 			Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Button.BackgroundTransparency = 1.000
@@ -164,10 +209,10 @@ function Library:Create(name)
 			Button.ScaleType = Enum.ScaleType.Slice
 			Button.SliceCenter = Rect.new(100, 100, 100, 100)
 			Button.SliceScale = 0.060
-			
+
 			local BTextButton = Instance.new("TextButton")
 			BTextButton.Name = "BTextButton"
-			BTextButton.Parent = Button
+			BTextButton.Parent = parent
 			BTextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			BTextButton.BackgroundTransparency = 1.000
 			BTextButton.BorderSizePixel = 0
@@ -182,11 +227,11 @@ function Library:Create(name)
 				callback()
 			end)
 		end
-		
-		function items:CreatSection(name)
+
+		function items:CreatSection(name,parent)
 			local Section = Instance.new("ImageLabel")
 			Section.Name = "Section"
-			Section.Parent = container
+			Section.Parent = parent
 			Section.Active = true
 			Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Section.BackgroundTransparency = 1.000
@@ -198,7 +243,7 @@ function Library:Create(name)
 			Section.ScaleType = Enum.ScaleType.Slice
 			Section.SliceCenter = Rect.new(100, 100, 100, 100)
 			Section.SliceScale = 0.060
-			
+
 			local SectionLabel = Instance.new("TextLabel")
 			SectionLabel.Name = "SectionLabel"
 			SectionLabel.Parent = Section
